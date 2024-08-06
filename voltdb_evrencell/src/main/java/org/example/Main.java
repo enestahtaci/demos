@@ -15,7 +15,9 @@ public class Main {
 
             client.createConnection("34.132.243.222:32776");
 
-            ClientResponse response = client.callProcedure("PROC3");
+            // SQL sorgusu ile tablodaki her şeyi seç
+            String query = "SELECT * FROM demo";
+            ClientResponse response = client.callProcedure("@AdHoc", query);
 
             if (response.getStatus() == ClientResponse.SUCCESS) {
                 VoltTable results = response.getResults()[0];
